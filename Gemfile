@@ -21,7 +21,6 @@ gem "kaminari"
 gem "bootstrap", "~> 5.3.0" # style and responsive layout
 gem "jquery-rails"
 gem "csv"
-gem "sassc-rails" # bootstrap requires this to compile its css
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
@@ -67,3 +66,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "dartsass-rails", "~> 0.5.1"

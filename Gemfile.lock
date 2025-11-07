@@ -100,6 +100,9 @@ GEM
     connection_pool (2.5.4)
     crass (1.0.6)
     csv (3.3.5)
+    dartsass-rails (0.5.1)
+      railties (>= 6.0.0)
+      sass-embedded (~> 1.63)
     date (3.5.0)
     debug (1.11.0)
       irb (~> 1.10)
@@ -113,17 +116,26 @@ GEM
       tzinfo
     faker (3.5.2)
       i18n (>= 1.8.11, < 2)
-    ffi (1.17.2-aarch64-linux-gnu)
-    ffi (1.17.2-aarch64-linux-musl)
-    ffi (1.17.2-arm-linux-gnu)
-    ffi (1.17.2-arm-linux-musl)
-    ffi (1.17.2-x86_64-linux-gnu)
-    ffi (1.17.2-x86_64-linux-musl)
     fugit (1.12.1)
       et-orbi (~> 1.4)
       raabro (~> 1.4)
     globalid (1.3.0)
       activesupport (>= 6.1)
+    google-protobuf (4.33.0)
+      bigdecimal
+      rake (>= 13)
+    google-protobuf (4.33.0-aarch64-linux-gnu)
+      bigdecimal
+      rake (>= 13)
+    google-protobuf (4.33.0-aarch64-linux-musl)
+      bigdecimal
+      rake (>= 13)
+    google-protobuf (4.33.0-x86_64-linux-gnu)
+      bigdecimal
+      rake (>= 13)
+    google-protobuf (4.33.0-x86_64-linux-musl)
+      bigdecimal
+      rake (>= 13)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     importmap-rails (2.2.2)
@@ -310,14 +322,18 @@ GEM
       rubocop-rails (>= 2.30)
     ruby-progressbar (1.13.0)
     rubyzip (3.2.2)
-    sassc (2.4.0)
-      ffi (~> 1.9)
-    sassc-rails (2.1.2)
-      railties (>= 4.0.0)
-      sassc (>= 2.0)
-      sprockets (> 3.0)
-      sprockets-rails
-      tilt
+    sass-embedded (1.93.3-aarch64-linux-gnu)
+      google-protobuf (~> 4.31)
+    sass-embedded (1.93.3-aarch64-linux-musl)
+      google-protobuf (~> 4.31)
+    sass-embedded (1.93.3-arm-linux-gnueabihf)
+      google-protobuf (~> 4.31)
+    sass-embedded (1.93.3-arm-linux-musleabihf)
+      google-protobuf (~> 4.31)
+    sass-embedded (1.93.3-x86_64-linux-gnu)
+      google-protobuf (~> 4.31)
+    sass-embedded (1.93.3-x86_64-linux-musl)
+      google-protobuf (~> 4.31)
     securerandom (0.4.1)
     selenium-webdriver (4.38.0)
       base64 (~> 0.2)
@@ -341,14 +357,6 @@ GEM
       fugit (~> 1.11)
       railties (>= 7.1)
       thor (>= 1.3.1)
-    sprockets (4.2.2)
-      concurrent-ruby (~> 1.0)
-      logger
-      rack (>= 2.2.4, < 4)
-    sprockets-rails (3.5.2)
-      actionpack (>= 6.1)
-      activesupport (>= 6.1)
-      sprockets (>= 3.0.0)
     sqlite3 (2.8.0-aarch64-linux-gnu)
     sqlite3 (2.8.0-aarch64-linux-musl)
     sqlite3 (2.8.0-arm-linux-gnu)
@@ -369,7 +377,6 @@ GEM
     thruster (0.1.16)
     thruster (0.1.16-aarch64-linux)
     thruster (0.1.16-x86_64-linux)
-    tilt (2.6.1)
     timeout (0.4.4)
     tsort (0.2.0)
     turbo-rails (2.0.20)
@@ -412,6 +419,7 @@ DEPENDENCIES
   brakeman
   capybara
   csv
+  dartsass-rails (~> 0.5.1)
   debug
   faker
   importmap-rails
@@ -423,7 +431,6 @@ DEPENDENCIES
   puma (>= 5.0)
   rails (~> 8.0.4)
   rubocop-rails-omakase
-  sassc-rails
   selenium-webdriver
   solid_cable
   solid_cache
