@@ -17,9 +17,9 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 gem "faker" # generate fake owner names, emails, adresses
-gem "httparty" # to fetch data from my api
 gem "kaminari"
 gem "bootstrap", "~> 5.3.0" # style and responsive layout
+gem "jquery-rails"
 gem "sassc-rails" # bootstrap requires this to compile its css
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
