@@ -1,2 +1,15 @@
-<h1>Breeds#show</h1>
-<p>Find me in app/views/breeds/show.html.erb</p>
+<h1><%= @breed.name %></h1>
+<p><strong>Temperament:</strong> <%= @breed.temperament %></p>
+<p><strong>Lifespan:</strong> <%= @breed.life_span %></p>
+<p><%= @breed.description %></p>
+
+<% if @breed.image_url.present? %>
+  <%= image_tag(@breed.image_url, class: "img-fluid mb-4") %>
+<% end %>
+
+<h3>Dogs of this Breed</h3>
+<ul>
+  <% @dogs.each do |dog| %>
+    <li><%= dog.name %> (Owner: <%= dog.owner.first_name %> <%= dog.owner.last_name %>)</li>
+  <% end %>
+</ul>

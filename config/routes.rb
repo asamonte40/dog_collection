@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "pages/about"
   # get "breeds/index"
   # get "breeds/show"
 
