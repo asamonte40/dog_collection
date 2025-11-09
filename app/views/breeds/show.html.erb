@@ -1,15 +1,36 @@
-<h1><%= @breed.name %></h1>
-<p><strong>Temperament:</strong> <%= @breed.temperament %></p>
-<p><strong>Lifespan:</strong> <%= @breed.life_span %></p>
-<p><%= @breed.description %></p>
+<div class="container mt-4">
+  <h1><%= @breed.name %></h1>
 
-<% if @breed.image_url.present? %>
-  <%= image_tag(@breed.image_url, class: "img-fluid mb-4") %>
-<% end %>
-
-<h3>Dogs of this Breed</h3>
-<ul>
-  <% @dogs.each do |dog| %>
-    <li><%= dog.name %> (Owner: <%= dog.owner.first_name %> <%= dog.owner.last_name %>)</li>
+  <% if @breed.image_url.present? %>
+    <%= image_tag(@breed.image_url, class: "img-fluid mb-3") %>
   <% end %>
-</ul>
+
+  <p><strong>Description:</strong> <%= @breed.description %></p>
+  <p><strong>Temperament:</strong> <%= @breed.temperament %></p>
+  <p><strong>Life Span:</strong> <%= @breed.life_span %></p>
+
+  <h2 class="mt-4">Dogs of this breed</h2>
+  <div class="row">
+    <% if @dogs.any? %>
+      <% @dogs.each do |dog| %>
+        <div class="col-md-4 mb-3">
+          <div class="card h-100">
+            <% if dog.image_url.present? %>
+              <%= image_tag(dog.image_url, class: "card-img-top") %>
+            <% end %>
+            <div class="card-body">
+              <h5 class="card-title"><%= dog.name %></h5>
+              <p class="card-text">
+                <strong>Owner:</strong> <%= dog.owner.first_name %> <%= dog.owner.last_name %>
+              </p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <p>No dogs added for this breed yet.</p>
+    <% end %>
+  </div>
+
+  <%= link_to 'Back to Breeds', breeds_path, class: "btn btn-secondary mt-3" %>
+</div>

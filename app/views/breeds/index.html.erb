@@ -1,14 +1,21 @@
-<h1>Dog Breeds</h1>
+<h1 class="mb-4">Dog Breeds</h1>
+
 <div class="row">
   <% @breeds.each do |breed| %>
     <div class="col-md-4 mb-3">
-      <div class="card">
+      <div class="card h-100">
         <% if breed.image_url.present? %>
           <%= image_tag(breed.image_url, class: "card-img-top") %>
         <% end %>
         <div class="card-body">
-          <h5><%= link_to breed.name, breed_path(breed) %></h5>
-          <p><%= truncate(breed.description, length: 100) %></p>
+          <h5 class="card-title">
+            <%= link_to breed.name, breed_path(breed) %>
+          </h5>
+          <p class="card-text">
+            <strong>Temperament:</strong> <%= breed.temperament %><br>
+            <strong>Life Span:</strong> <%= breed.life_span %><br>
+            <%= truncate(breed.description, length: 100) %>
+          </p>
         </div>
       </div>
     </div>
