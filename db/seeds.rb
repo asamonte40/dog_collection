@@ -126,12 +126,29 @@ puts "creating dogs..."
   breed = Breed.order("RANDOM()").first
   owner = Owner.order("RANDOM()").first
 
+  api_path = find_api_match(breed.name, api_paths)
+
+  # Fetch an image for this specific breed
+  image_url = if api_path
+    begin
+      response = URI.open("https://dog.ceo/api/breed/#{api_path}/images/random").read
+      data = JSON.parse(response)
+      data["message"]
+    rescue
+      "https://placehold.co/300x300?text=#{URI.encode_www_form_component(breed.name)}"
+    end
+  else
+    # fallback if no API match
+    "https://placehold.co/300x300?text=#{URI.encode_www_form_component(breed.name)}"
+  end
+
+
   Dog.create!(
     name: Faker::Creature::Dog.name,
-    image_url: breed.image_url,
+    image_url: image_url,
     breed: breed,
     owner: owner
   )
 end
 
-  puts "#{Breed.count} Breeds, #{Owner.count} Owners, #{Dog.count} Dogs created."
+puts "#{Breed.count} Breeds, #{Owner.count} Owners, #{Dog.count} Dogs created."

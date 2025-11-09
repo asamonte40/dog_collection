@@ -1,0 +1,31 @@
+<div class="container mt-4">
+  <h1><%= @owner.first_name %> <%= @owner.last_name %></h1>
+
+  <p><strong>Email:</strong> <%= @owner.email %></p>
+  <p><strong>Address:</strong> <%= @owner.address %></p>
+
+  <h2 class="mt-4">Dogs Owned</h2>
+  <div class="row">
+    <% if @owner.dogs.any? %>
+      <% @owner.dogs.each do |dog| %>
+        <div class="col-md-4 mb-3">
+          <div class="card h-100">
+            <% if dog.image_url.present? %>
+              <%= image_tag(dog.image_url, class: "card-img-top") %>
+            <% end %>
+            <div class="card-body">
+              <h5 class="card-title"><%= link_to dog.name, breed_path(dog.breed) %></h5>
+              <p class="card-text">
+                <strong>Breed:</strong> <%= dog.breed.name %>
+              </p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <p>No dogs for this owner yet.</p>
+    <% end %>
+  </div>
+
+  <%= link_to 'Back to Owners', owners_path, class: "btn btn-secondary mt-3" %>
+</div>

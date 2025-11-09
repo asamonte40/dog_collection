@@ -1,2 +1,6 @@
-<h1>Dogs#index</h1>
-<p>Find me in app/views/dogs/index.html.erb</p>
+<h1><%= @dog.name %></h1>
+<p><strong>Breed:</strong> <%= link_to @dog.breed.name, breed_path(@dog.breed) %></p>
+<p><strong>Owner:</strong> <%= link_to "#{@dog.owner.first_name} #{@dog.owner.last_name}", owner_path(@dog.owner) %></p>
+<p><strong>Description:</strong> <%= @dog.breed.description %></p>
+
+<%= image_tag @dog.image_url, class: "img-fluid mt-3 rounded" if @dog.image_url.present? %>

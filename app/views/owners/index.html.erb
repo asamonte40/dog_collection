@@ -1,0 +1,21 @@
+<h1 class="mb-4">Owners</h1>
+
+<div class="row">
+  <% @owners.each do |owner| %>
+    <div class="col-md-4 mb-3">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">
+            <%= link_to "#{owner.first_name} #{owner.last_name}", owner_path(owner) %>
+          </h5>
+          <p class="card-text">
+            <strong>Email:</strong> <%= owner.email %><br>
+            <strong>Address:</strong> <%= owner.address %>
+          </p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to 'Add New Owner', new_owner_path, class: "btn btn-primary mt-3" %>
