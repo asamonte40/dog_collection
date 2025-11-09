@@ -1,0 +1,20 @@
+<div class="container text-center mt-4">
+  <h1>Welcome to the Dog Collection</h1>
+  <p class="lead">Browse dogs, owners, and breeds from our collection.</p>
+
+  <h3 class="mt-5">Latest Dogs</h3>
+  <div class="row">
+    <% @recent_dogs.each do |dog| %>
+      <div class="col-md-4 mb-3">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title"><%= dog.name %></h5>
+            <p class="card-text">Breed: <%= dog.breed.name %></p>
+            <p class="card-text">Owner: <%= dog.owner.first_name %> <%= dog.owner.last_name %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+

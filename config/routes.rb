@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # get "breeds/show"
 
   # Set the root page
-  root "breeds#index"
+  root "pages#home"
 
   # RESTful routes for breeds (only index and show)
   resources :breeds, only: [ :index, :show ]
@@ -13,10 +13,10 @@ Rails.application.routes.draw do
   # RESTful routes for dogs (only index and show)
   resources :dogs, only: [ :index, :show ]
 
-  resources :owners, only: [ :index, :show ]
+  resources :owners
 
   # Static about page
-  get "/about", to: "pages#about"
+  get "/about", to: "pages#about", as: "about"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

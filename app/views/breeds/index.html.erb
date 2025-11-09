@@ -1,16 +1,16 @@
 <h1 class="mb-4">Dog Breeds</h1>
 
-<div class="row">
+<div class="row row-cols-1 row-cols-md-3 g-4">
   <% @breeds.each do |breed| %>
-    <div class="col-md-4 mb-3">
+    <div class="col">
       <div class="card h-100">
         <% if breed.image_url.present? %>
-          <%= image_tag(breed.image_url, class: "card-img-top") %>
+          <%= image_tag breed.image_url, class: "card-img-top" %>
+        <% else %>
+          <%= image_tag "https://placehold.co/300x200?text=No+Image", class: "card-img-top" %>
         <% end %>
         <div class="card-body">
-          <h5 class="card-title">
-            <%= link_to breed.name, breed_path(breed) %>
-          </h5>
+          <h5 class="card-title"><%= link_to breed.name, breed_path(breed) %></h5>
           <p class="card-text">
             <strong>Temperament:</strong> <%= breed.temperament %><br>
             <strong>Life Span:</strong> <%= breed.life_span %><br>
@@ -23,4 +23,5 @@
 </div>
 
 <%= paginate @breeds %>
+
 

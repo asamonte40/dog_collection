@@ -1,13 +1,11 @@
 <h1 class="mb-4">Owners</h1>
 
-<div class="row">
+<div class="row row-cols-1 row-cols-md-3 g-4">
   <% @owners.each do |owner| %>
-    <div class="col-md-4 mb-3">
+    <div class="col">
       <div class="card h-100">
         <div class="card-body">
-          <h5 class="card-title">
-            <%= link_to "#{owner.first_name} #{owner.last_name}", owner_path(owner) %>
-          </h5>
+          <h5 class="card-title"><%= link_to "#{owner.first_name} #{owner.last_name}", owner_path(owner) %></h5>
           <p class="card-text">
             <strong>Email:</strong> <%= owner.email %><br>
             <strong>Address:</strong> <%= owner.address %>

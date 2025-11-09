@@ -1,6 +1,7 @@
 class OwnersController < ApplicationController
   def index
     @owners = Owner.all
+    @owners = @owners.where("first_name LIKE ? OR last_name LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%") if params[:q].present?
   end
 
   def show
