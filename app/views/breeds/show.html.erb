@@ -1,9 +1,7 @@
 <div class="container mt-4">
   <h1><%= @breed.name %></h1>
 
-  <% if @breed.image_url.present? %>
-    <%= image_tag(@breed.image_url, class: "img-fluid mb-3") %>
-  <% end %>
+  <%= image_tag(@breed.image_url.presence || "https://placehold.co/300x300?text=No+Image", class: "img-fluid mb-3") %>
 
   <p><strong>Description:</strong> <%= @breed.description %></p>
   <p><strong>Temperament:</strong> <%= @breed.temperament %></p>
