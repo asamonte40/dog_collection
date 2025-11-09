@@ -1,6 +1,19 @@
-<h1><%= @dog.name %></h1>
-<p><strong>Breed:</strong> <%= link_to @dog.breed.name, breed_path(@dog.breed) %></p>
-<p><strong>Owner:</strong> <%= link_to "#{@dog.owner.first_name} #{@dog.owner.last_name}", owner_path(@dog.owner) %></p>
-<p><strong>Description:</strong> <%= @dog.breed.description %></p>
+<h1>All Dogs</h1>
 
-<%= image_tag @dog.image_url, class: "img-fluid mt-3 rounded" if @dog.image_url.present? %>
+<div class="row">
+  <% @dogs.each do |dog| %>
+    <div class="col-md-4 mb-4">
+      <div class="card shadow-sm">
+        <% if dog.image_url.present? %>
+          <%= image_tag dog.image_url, class: "card-img-top" %>
+        <% end %>
+
+        <div class="card-body">
+          <h5 class="card-title"><%= link_to dog.name, dog_path(dog) %></h5>
+          <p><strong>Breed:</strong> <%= dog.breed&.name || "Unknown" %></p>
+          <p><strong>Owner:</strong> <%= "#{dog.owner&.first_name} #{dog.owner&.last_name}" %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

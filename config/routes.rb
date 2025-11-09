@@ -13,8 +13,7 @@ Rails.application.routes.draw do
   # RESTful routes for dogs (only index and show)
   resources :dogs, only: [ :index, :show ]
 
-  resources :owners
-
+  resources :owners, only: [ :index, :show ]
 
   # Static about page
   get "/about", to: "pages#about"

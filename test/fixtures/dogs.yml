@@ -2,12 +2,12 @@
 
 one:
   name: MyString
-  image_url: MyString
+  image_url: "https://via.placeholder.com/300?text=Dog"
   breed: one
   owner: one
 
 two:
   name: MyString
-  image_url: MyString
+  image_url: "https://via.placeholder.com/300?text=Dog"
   breed: two
   owner: two
