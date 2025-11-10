@@ -11,7 +11,7 @@
         <div class="col-md-4 mb-3">
           <div class="card h-100">
             <% if dog.image_url.present? %>
-              <%= image_tag(dog.image_url, class: "card-img-top") %>
+              <%= image_tag(dog.image_url, class: "card-img-top", alt: "#{dog.name} photo") %>
             <% end %>
             <div class="card-body">
               <h5 class="card-title">
