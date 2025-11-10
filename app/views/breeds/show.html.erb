@@ -1,17 +1,7 @@
-<style>
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #fef6f5;
-  color: #333;
-  line-height: 1.6;
-  padding: 1rem;
-}
-</style>
-
 <div class="container mt-4">
   <h1><%= @breed.name %></h1>
 
-  <%= image_tag(@breed.image_url.presence || "https://placehold.co/300x300?text=No+Image", class: "img-fluid mb-3") %>
+  <%= image_tag(@breed.image_url.presence || "https://placehold.co/300x300?text=No+Image", alt: "#{@breed.name} breed", class: "img-fluid mb-3") %>
 
   <p><strong>Description:</strong> <%= @breed.description %></p>
   <p><strong>Temperament:</strong> <%= @breed.temperament %></p>
@@ -24,7 +14,7 @@ body {
         <div class="col-md-4 mb-3">
           <div class="card h-100">
             <% if dog.image_url.present? %>
-              <%= image_tag(dog.image_url, class: "card-img-top") %>
+              <%= image_tag(dog.image_url, alt: "#{@breed.name} breed", class: "card-img-top") %>
             <% end %>
             <div class="card-body">
               <h5 class="card-title"><%= dog.name %></h5>

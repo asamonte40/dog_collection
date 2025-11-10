@@ -112,7 +112,7 @@ if unmatched.any?
 end
 
 puts "\ncreating owners..."
-10.times do
+100.times do
   Owner.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
