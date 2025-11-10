@@ -6,21 +6,133 @@ body {
   line-height: 1.6;
   padding: 1rem;
 }
+
+.container {
+  max-width: 1200px; /* make the grid wide */
+  margin: 2rem auto;
+}
+
+.top-section form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.top-section input,
+.top-section select,
+.top-section button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0;
+  outline: none;
+  border: 1px solid #ccc;
+  padding: 0.5rem 0.75rem;
+  font-family: inherit;
+  font-size: 1rem;
+  background-color: #fff;
+  color: #333;
+}
+
+.top-section button {
+  background-color: #ff7f50;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.top-section button:hover {
+  background-color: #e65c2f;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.card-img-top {
+  width: 100%;
+  height: 200px; /* uniform image height */
+  object-fit: cover; /* crop images */
+}
+
+.card-body {
+  min-height: 140px;
+  padding: 1rem;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-title a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.card-text {
+  font-size: 0.95rem;
+  color: #555;
+  max-height: 4rem; /* roughly 3 lines */
+  overflow: hidden;
+}
+
+.btn {
+  background-color: #ff8fab;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+}
+
+.btn:hover {
+  background-color: #ff6b88;
+}
 </style>
 
 <div class="container text-center mt-4">
-  <h1>Welcome to the Dog Collection</h1>
-  <p class="lead">Browse dogs, owners, and breeds from our collection.</p>
+  <h1 class="mb-4">Welcome to the Dog Collection</h1>
 
-  <h3 class="mt-5">Latest Dogs</h3>
-  <div class="row">
-    <% @recent_dogs.each do |dog| %>
-      <div class="col-md-4 mb-3">
+  <p class="lead mb-5">
+    Explore a collection of adorable dogs, their loving owners, and unique breeds!
+  </p>
+
+  <!-- Navigation Links -->
+  <div class="mb-4">
+    <%= link_to "About", about_path, class: "btn btn-outline-primary mx-2" %>
+    <%= link_to "Owners", owners_path, class: "btn btn-outline-primary mx-2" %>
+    <%= link_to "Dogs", dogs_path, class: "btn btn-outline-primary mx-2" %>
+    <%= link_to "Breeds", breeds_path, class: "btn btn-outline-primary mx-2" %>
+  </div>
+
+  <!-- Latest Dogs Section -->
+  <h2 class="mt-5 mb-3">Latest Dogs Added</h2>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <% @dogs.limit(6).each do |dog| %>
+      <div class="col">
         <div class="card h-100">
+          <% if dog.image_url.present? %>
+            <%= image_tag dog.image_url, class: "card-img-top" %>
+          <% else %>
+            <%= image_tag "https://placehold.co/300x200?text=No+Image", class: "card-img-top" %>
+          <% end %>
           <div class="card-body">
-            <h5 class="card-title"><%= dog.name %></h5>
-            <p class="card-text">Breed: <%= dog.breed.name %></p>
-            <p class="card-text">Owner: <%= dog.owner.first_name %> <%= dog.owner.last_name %></p>
+            <h5 class="card-title">
+              <%= link_to dog.name, dog_path(dog), class: "text-decoration-none text-dark" %>
+            </h5>
+            <p class="card-text">
+              <strong>Breed:</strong> <%= dog.breed.name if dog.breed %><br>
+              <strong>Owner:</strong> <%= "#{dog.owner.first_name} #{dog.owner.last_name}" if dog.owner %>
+            </p>
           </div>
         </div>
       </div>

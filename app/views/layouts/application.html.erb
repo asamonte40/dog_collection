@@ -21,6 +21,70 @@
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    <style>
+    /*Search bar style */
+    form.d-flex input[type="text"],
+    form.d-flex input[type="search"] {
+      border: 2px solid #ff8fab;
+      border-radius: 8px;
+      padding: 10px;
+      transition: box-shadow 0.3s ease;
+    }
+
+    form.d-flex input[type="text"]:focus,
+    form.d-flex input[type="search"]:focus {
+      box-shadow: 0 0 8px rgba(255, 143, 171, 0.5);
+      outline: none;
+    }
+
+    /* Search button */
+    form.d-flex .btn {
+      background-color: #ff8fab;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    form.d-flex .btn:hover {
+      background-color: #ff6b88;
+    }
+
+    /* Pages dropdown styling */
+    .dropdown .btn-secondary {
+      background-color: #ff8fab;
+      border: none;
+      color: white;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    .dropdown .btn-secondary:hover {
+      background-color: #ff6b88;
+    }
+
+    .dropdown-menu {
+      border-radius: 10px;
+      border: 1px solid #ffd1dc;
+    }
+
+    .dropdown-menu .dropdown-item:hover {
+      background-color: #ffe6eb;
+      color: #ff4f6d;
+    }
+
+    /* Remove underlines from links */
+    a, .dropdown-item, .card-title a {
+      text-decoration: none !important;
+    }
+
+    /* Optional: center the whole header better */
+    .d-flex {
+      align-items: center;
+    }
+  </style>
   </head>
 
  <body class="p-3">
