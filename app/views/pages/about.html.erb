@@ -6,16 +6,52 @@ body {
   line-height: 1.6;
   padding: 1rem;
 }
+
+a {
+  text-decoration: none;
+}
 </style>
 
+<div class="container text-center mt-4">
 <h1>About This Project</h1>
 
-<p>This Rails project uses data from three sources:</p>
+<p>This Rails project uses data from multiple sources to manage information about dog breeds, individual dogs, and their owners. The goal is to integrate these datasets into a relational database that can be navigated, searched, and displayed in the web application.</p>
+</div>
+
+<h2>Datasets Used</h2>
+
 <ul>
-  <li><strong>Dog CEO API</strong> — Breed names and images</li>
-  <li><strong>CSV Dataset</strong> — Breed descriptions, temperament, lifespan</li>
-  <li><strong>Faker</strong> — Random owner data</li>
+  <li>
+    <strong>Dog CEO API</strong> — Provides a list of dog breeds and sub-breeds, along with random images for each breed. This data populates the <code>breeds</code> table's <code>image_url</code> column. API documentation is available at
+    <a href="https://dog.ceo/dog-api/documentation/random" target="_blank">Dog CEO API</a>.
+  </li>
+  <li>
+    <strong>CSV Dataset</strong> — Contains structured breed information, including country of origin, fur color, height, eye color, common health problems, character traits, and lifespan. These fields are mapped to <code>breeds.name</code>, <code>breeds.description</code>, <code>breeds.temperament</code>, and <code>breeds.life_span</code>. The dataset was obtained from
+    <a href="https://www.opendatabay.com/data/ai-ml/cfd7e1fa-3243-4719-bb34-84105960f5a5" target="_blank">Open Data Bay</a>.
+  </li>
+  <li>
+    <strong>Faker</strong> — Generates random owner data such as first name, last name, email, and address. This populates the <code>owners</code> table for testing and simulating realistic relationships between dogs and owners.
+  </li>
 </ul>
 
-<p>Each dog belongs to an owner and a breed.</p>
+<h2>Database Structure and Relationships</h2>
+
+<p>The database has three main tables:</p>
+
+<ul>
+  <li><strong>breeds</strong> — Columns: <code>name</code>, <code>description</code>, <code>temperament</code>, <code>life_span</code>, <code>image_url</code>.</li>
+  <li><strong>owners</strong> — Columns: <code>first_name</code>, <code>last_name</code>, <code>email</code>, <code>address</code>.</li>
+  <li><strong>dogs</strong> — Columns: <code>name</code>, <code>image_url</code>, <code>breed_id</code>, <code>owner_id</code>. Each dog belongs to a breed and an owner.</li>
+</ul>
+
+<p><strong>Relationships:</strong></p>
+
+<ul>
+  <li>Each <code>Dog</code> belongs to one <code>Breed</code> and one <code>Owner</code> (one-to-many relationships).</li>
+  <li>Each <code>Owner</code> can have multiple <code>Dogs</code>.</li>
+  <li>Each <code>Breed</code> can have multiple <code>Dogs</code>.</li>
+</ul>
+
+<p>This integration allows the application to combine data from multiple sources, providing a comprehensive view of dogs, their breeds, and owners, which can be navigated and displayed on the site.</p>
+
 
